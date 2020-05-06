@@ -97,6 +97,8 @@ A,zsh-fast-syntax-highlighting,provides syntax highlighting in the shell.
 ,unzip,TODO
 ,vagrant,TODO
 ,valgrind,TODO
+,virtualbox-guest-modules-arch,TODO
+,virtualbox-guest-utils,TODO
 ,vifm,TODO
 ,wget,TODO
 ,xclip,TODO
