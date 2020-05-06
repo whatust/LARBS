@@ -79,7 +79,6 @@ A,zsh-fast-syntax-highlighting,provides syntax highlighting in the shell.
 ,mpv,is a video player
 ,ncmpcpp,is a client for mpd
 ,neomutt,is email client
-,neovim,is a terminal based text editor
 ,newsboat,is a rss feed client
 ,nmap,scans open ports on the network
 ,p7zip,uncompress files
@@ -97,8 +96,6 @@ A,zsh-fast-syntax-highlighting,provides syntax highlighting in the shell.
 ,unzip,TODO
 ,vagrant,TODO
 ,valgrind,TODO
-,virtualbox-guest-modules-arch,TODO
-,virtualbox-guest-utils,TODO
 ,vifm,TODO
 ,wget,TODO
 ,xclip,TODO
