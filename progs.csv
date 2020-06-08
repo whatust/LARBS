@@ -10,7 +10,6 @@
 ,fontconfig,is required for the compilation of some programs.
 ,arandr,is a UI for screen adjustment.
 ,calcurse,is a lightweight terminal-based calendar.
-,xcompmgr,is for transparency and removing screen-tearing.
 ,xorg-xprop,is a tool for detecting window properties.
 ,dosfstools,allows your computer to access dos-like filesystems.
 ,libnotify,allows desktop notifications.
@@ -70,10 +69,13 @@ A,zsh-fast-syntax-highlighting,provides syntax highlighting in the shell.
 ,git,is a version control command line utility
 ,golang,is a go compiler
 ,imagemagick,is a command line image editor
+,ttf-inconsolata,is a monospaced font
 ,kazam,is a program to capture screenshots
 ,lshw,lists the hardware specifications
 ,lsof,lists open files in use
 ,ltrace,lists the inked libraries of a binary
+,man-db,TODO
+,man-pages,TODO
 ,mp3info,gets the metadata from a mp3 file
 ,mpd,is a music player daemon
 ,mpv,is a video player
@@ -82,7 +84,6 @@ A,zsh-fast-syntax-highlighting,provides syntax highlighting in the shell.
 ,newsboat,is a rss feed client
 ,nmap,scans open ports on the network
 ,p7zip,uncompress files
-,pcmanfm,is GUI file manager
 ,ripgrep,TODO
 ,rsync,TODO
 ,sox,TODO
@@ -104,6 +105,14 @@ A,zsh-fast-syntax-highlighting,provides syntax highlighting in the shell.
 ,zathura-ps,TODO
 ,zsh,TODO
 ,zsh-completions,TODO
+,pcmanfm-gtk3,is GUI file manager
+,mlocate,TODO
+,htop,TODO
+,mpstat,TODO
+,noto-fonts-emoji,TODO
+,ttf-roboto-mono,Is a monospace font
+A,flat-remix-gtk,is gtk theme
+A,flat-remix,is a icon gtk theme
 A,cherrytree,is a hierarchycal note taking application
 A,boxes,TODO
 A,spaceship-prompt-git,TODO
@@ -111,4 +120,9 @@ A,brave-bin,TODO
 A,polybar,TODO
 A,zsh-you-should-use,TODO
 A,monolith,downloads webpages and packs it into a single html
-P,ueberzeg,allows image previewing on vifm
+A,trizen,wraper for the AUR package
+P,ueberzug,allows image previewing on vifm
+A,libxft-bgra,Enables emojis on glyph font
+G,https://github.com/whatust/st.git,is a terminal emulator
+G,https://github.com/whatust/dwm,is a basic window manager
+G,https://github.com/whatust/dwmblocks.git,is a bar status similar to i3blocks
