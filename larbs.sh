@@ -58,6 +58,10 @@ usercheck() { \
 	dialog --colors --title "WARNING!" --yes-label "CONTINUE" --no-label "No wait..." --yesno "The user \`$name\` already exists on this system. LARBS can install for a user already existing, but it will \\Zboverwrite\\Zn any conflicting settings/dotfiles on the user account.\\n\\nLARBS will \\Zbnot\\Zn overwrite your user files, documents, videos, etc., so don't worry about that, but only click <CONTINUE> if you don't mind your settings being overwritten.\\n\\nNote also that LARBS will change $name's password to the one you just gave." 14 70
 	}
 
+getvirtualization() { \
+    dialog --colors --title "Virtualization" --yes-label "Yes" --no-label "No" --yesno "The libraries installed by this wizard needs hardware support, make sure your system meets the necessary specifications before clicking \"Yes\". To discover if your CPU supports virtualization run \"egrep -c '(vmx|svm)' /proc/cpuinfo\"" 14 70 && { installvirt="yes"; }
+        }
+
 preinstallmsg() { \
 	dialog --title "Let's get this party started!" --yes-label "Let's go!" --no-label "No, nevermind!" --yesno "The rest of the installation will now be totally automated, so you can sit back and relax.\\n\\nIt will take some time, but when done, you can relax even more with your complete system.\\n\\nNow just press <Let's go!> and the system will begin installation!" 13 60 || { clear; exit; }
 	}
@@ -96,6 +100,11 @@ maininstall() { # Installs all needed programs from main repo.
 	installpkg "$1"
 	}
 
+virtinstall() { # Installs all needed programs from main repo.
+	dialog --title "LARBS Installation" --infobox "Installing \`$1\` ($n of $total). $1 $2" 5 70
+	[ "$installvirt" = "yes" ] && installpkg "$1"
+	}
+
 gitmakeinstall() {
 	progname="$(basename "$1" .git)"
 	dir="$repodir/$progname"
@@ -118,6 +127,12 @@ pipinstall() { \
 	yes | pip install "$1"
 	}
 
+geminstall() { \
+        dialog --title "LARBS Installation" --infobox "Installing the Python packge \'$1\' ($n of $total). $1 $2" 5 70
+        command -v gem || installpkg rubygems >/dev/null 2>&1
+        yes | gem install "$1"
+        }
+
 installationloop() { \
 	([ -f "$progsfile" ] && cp "$progsfile" /tmp/progs.csv) || curl -Ls "$progsfile" | sed '/^#/d' | eval grep "$grepseq" > /tmp/progs.csv
 	total=$(wc -l < /tmp/progs.csv)
@@ -129,6 +144,8 @@ installationloop() { \
 			"A") aurinstall "$program" "$comment" ;;
 			"G") gitmakeinstall "$program" "$comment" ;;
 			"P") pipinstall "$program" "$comment" ;;
+			"R") geminstall "$program" "$comment" ;;
+			"V") virtinstall "$program" "$comment" ;;
 			*) maininstall "$program" "$comment" ;;
 		esac
 	done < /tmp/progs.csv ;}
@@ -165,6 +182,9 @@ getuserandpass || error "User exited."
 
 # Give warning if user already exists.
 usercheck || error "User exited."
+
+# Ask if virtualization will be installed
+getvirtualization || error "User exited."
 
 # Last chance for user to back out before install.
 preinstallmsg || error "User exited."
